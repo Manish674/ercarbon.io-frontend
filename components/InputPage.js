@@ -14,9 +14,9 @@ const InputPage = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    const { transportation, recycle, diet, location, energy } = data;
     setData({
       ...data,
       transportation: "",
@@ -25,6 +25,24 @@ const InputPage = () => {
       location: "",
       energy: "",
     });
+
+    const response = await fetch("", {
+      method: "POST",
+      headers: {
+        "Content-Type": "applicatio/json",
+        body: {
+          data: {
+            transportation,
+            recycle,
+            diet,
+            location,
+            energy,
+          },
+        },
+      },
+    });
+
+    const promise = response.json();
   };
 
   return (
