@@ -1,0 +1,47 @@
+.container {
+} 
+
+.form {
+  height: 100vh;
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-size: 2rem;
+}
+
+.input {
+  padding: 0.5rem;
+}
+
+.wrapper {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input {
+}
+
+.button {
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
