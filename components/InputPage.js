@@ -2,53 +2,107 @@ import styles from "../styles/Input.module.css";
 import { useState } from "react";
 
 const InputPage = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    transportation: "",
+    recycle: "",
+    diet: "",
+    location: "",
+    energy: "",
+  });
 
   const handleOnChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+    setData({
+      ...data,
+      transportation: "",
+      recycle: "",
+      diet: "",
+      location: "",
+      energy: "",
+    });
+  };
+
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form onSubmit={(e) => handleSubmit(e)} className={styles.form}>
         <div className={styles.wrapper}>
           <span className={styles.inputWrapper} id="inputWrapper">
-            <lable className={styles.label}>Location</lable>
-            <input className={styles.textInput} placeholder="zipcode" />
+            <label className={styles.label}>Location</label>
+            <input
+              name="location"
+              className={styles.textInput}
+              onChange={(e) => handleOnChange(e)}
+              value={data.location}
+              placeholder="zipcode"
+            />
           </span>
 
           <span className={styles.inputWrapper}>
-            <lable className={styles.label}>Energy</lable>
-            <select className={styles.input}>
-              <option value=""></option>
+            <label htmlFor="energy" className={styles.label}>
+              Energy
+            </label>
+            <select
+              className={styles.input}
+              onChange={(e) => handleOnChange(e)}
+              name="energy"
+              value={data.energy}
+            >
+              <option value=""> </option>
+              <option value="something">something</option>
+              <option value="something2">something2</option>
             </select>
           </span>
 
           <span className={styles.inputWrapper}>
-            <lable className={styles.label}>Transportation</lable>
-            <select className={styles.input}>
-              <option value="">Personal</option>
-              <option value="">Public</option>
-              <option value="">Air rail</option>
-              <option value="">Bus</option>
+            <label className={styles.label}>Transportation</label>
+            <select
+              value={data.transportation}
+              onChange={(e) => handleOnChange(e)}
+              name="transportation"
+              className={styles.input}
+              defaultValue=""
+            >
+              <option value=""> </option>
+              <option value="personal">Personal</option>
+              <option value="public">Public</option>
+              <option value="air rail">Air rail</option>
+              <option value="bus">Bus</option>
             </select>
           </span>
 
           <span className={styles.inputWrapper}>
-            <lable className={styles.label}>Recycle</lable>
-            <select className={styles.input}>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+            <label className={styles.label}>Recycle</label>
+            <select
+              onChange={(e) => handleOnChange(e)}
+              value={data.recycle}
+              name="recycle"
+              className={styles.input}
+              defaultValue="false"
+            >
+              <option value="false">No</option>
+              <option value="true">Yes</option>
             </select>
           </span>
 
           <span className={styles.inputWrapper}>
-            <lable className={styles.label}>Diet</lable>
-            <select className={styles.input}>
-              <option value="">Vegan</option>
-              <option value="">Vegetarian</option>
-              <option value="">Non Vegetarian</option>
-              <option value="">Snacks Drinks</option>
+            <label className={styles.label}>Diet</label>
+            <select
+              onChange={(e) => handleOnChange(e)}
+              name="diet"
+              className={styles.input}
+              defaultValue=""
+              value={data.diet}
+            >
+              <option value=""> </option>
+              <option value="vegan">Vegan</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="non vegetarian">Non Vegetarian</option>
+              <option value="snack drinks">Snacks Drinks</option>
             </select>
           </span>
           <button className={styles.button}>Submit</button>
