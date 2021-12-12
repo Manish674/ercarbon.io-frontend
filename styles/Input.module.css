@@ -1,5 +1,10 @@
 .container {
-} 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10rem;
+}
+ 
 
 .form {
   height: 100vh;
@@ -34,6 +39,7 @@
   gap: 5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  height: 70vh;
 }
 
 .input {
